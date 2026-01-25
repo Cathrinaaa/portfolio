@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Objects</title>
+    <link rel="stylesheet" href="css/index.css">
+
+    <script>
+        let names= [];
+
+        let employees = [
+            {
+                "emp_id": "123",
+                "name": "Rossellah",
+                "position": "Manager",
+            },
+            {
+                "emp_id": "456",
+                "name": "bikyang",
+                "position": "President",
+            }
+            
+        ]
+    </script>
+
+    <script src="js/array.js"></script>
+    <script src="js/objects.js"></script>
+</head>
+<body>
+    <input type="text" id="name"><br>
+    <button type="button" onclick="add()">Add</button>
+    <button type="button" onclick="showall()">Show All</button>
+
+    <p id="list"></p>
+
+    <div class="container">
+        <div class="table-container">
+            <h2>EMPLOYEE LIST</h2>
+            <table id="employee">
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Name</th>
+                        <th>Position</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    
+        <div class="form-container">
+            <h2>Add Employee</h2>
+            <label>ID:</label>
+            <input type="text" id="emp_id"><br>
+            <label>Name:</label>
+            <input type="text" id="emp_name"><br>
+            <label>Position:</label>
+            <input type="text" id="emp_position"><br>
+            <button type="button" onclick="addemployee()">Add Employee</button>
+        </div>
+    </div>
+    
+</body>
+</html>

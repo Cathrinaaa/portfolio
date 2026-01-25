@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script src="./js/number.js"></script>
+    <script src="./js/operations.js"></script>
+    <link rel="stylesheet" href="css/cal.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <div class="container">
+    <div class="inputs-container">
+        <input type="text" id="display1" value="0" readonly>
+        <input type="text" id="operator" placeholder="operator">
+        <input type="text" id="display2" hidden>
+        
+    </div>
+
+    <div class="calculator">
+        <!--<input type="text" id="display" disabled>-->
+        <button onclick="seven()">7</button>
+        <button onclick="eight()">8</button>
+        <button onclick="nine()">9</button>
+        <button onclick="sum()">+</button>
+
+        <button onclick="four()">4</button>
+        <button onclick="five()">5</button>
+        <button onclick="six()">6</button>
+        <button onclick="sub()">-</button>
+
+        <button onclick="one()">1</button>
+        <button onclick="two()">2</button>
+        <button onclick="three()">3</button>
+        <button onclick="mul()">×</button>
+
+        <button onclick="zero()">0</button>
+        <button onclick="dot()">.</button>
+        <button onclick="equal()">=</button>
+        <button onclick="div()">/</button>
+    </div>
+</div>
+</body>
+</html>
