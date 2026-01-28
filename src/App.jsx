@@ -6,6 +6,7 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
   const [currentCertificate, setCurrentCertificate] = useState(null);
+  const [currentWebinar, setCurrentWebinar] = useState(null);
   const [formStatus, setFormStatus] = useState(null);
 
   // Smooth scroll to section
@@ -21,7 +22,7 @@ function App() {
   // Highlight active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'projects', 'certificates', 'contact'];
+      const sections = ['home', 'about', 'projects', 'certificates', 'webinars', 'contact'];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element && window.scrollY + 100 >= element.offsetTop) {
@@ -56,8 +57,8 @@ function App() {
     {
       id: 3,
       title: "Apply AI: Update Your Resume",
-      image: "/certificate-placeholder.jpg",
-      url: "#" 
+      image: "/cert3.png",
+      url: "/cert3.png" 
     },
     {
       id: 4,
@@ -79,6 +80,19 @@ function App() {
     }
   ];
 
+  // Webinars data - Add your webinars here
+  const webinars = [
+    {
+      id: 1,
+      title: "Cybersecurity for Everyone and Introduction to Philippine National Public Key Infrastructure (PNPKI)",
+      image: "/webinar-placeholder.jpg",
+      url: "/webinar-placeholder.jpg",
+      date: "2026-01-28",
+      organizer: "DICT CAR, Abra Provincial Office",
+      time: "8:00 AM – 12:00 NN",
+      description: "Digital Safety Webinar aimed to enhance participants' awareness and knowledge on digital safety, cybersecurity best practices, and responsible use of digital platforms."
+    }
+  ];
   return (
     <div className="bg-gradient-to-r from-purple-900 via-pink-900 to-purple-900 text-white min-h-screen">
       {/* Navigation Bar */}
@@ -122,6 +136,15 @@ function App() {
                   }`}
               >
                 Certificates
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => scrollToSection('webinars')}
+                className={`text-base lg:text-lg font-medium hover:text-pink-300 transition-colors ${activeSection === 'webinars' ? 'text-pink-300' : 'text-purple-200'
+                  }`}
+              >
+                Webinars
               </button>
             </li>
             <li>
@@ -188,6 +211,15 @@ function App() {
                     }`}
                 >
                   Certificates
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection('webinars')}
+                  className={`w-full text-left py-2 px-4 rounded-md font-medium hover:text-pink-300 transition-colors ${activeSection === 'webinars' ? 'text-pink-300 bg-purple-900/50' : 'text-purple-200'
+                    }`}
+                >
+                  Webinars
                 </button>
               </li>
               <li>
@@ -400,6 +432,56 @@ function App() {
                   className="block w-full px-4 py-2 sm:px-6 sm:py-2 bg-pink-500 text-white rounded-lg shadow-lg hover:bg-pink-600 transition-all text-sm sm:text-base text-center"
                 >
                   View Certificate
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Webinars Section */}
+      <section id="webinars" className="py-16 md:py-20 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold text-pink-300 mb-8 md:mb-12 text-center">Webinars</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {webinars.map((webinar) => (
+              <div
+                key={webinar.id}
+                className="bg-purple-800 p-6 backdrop-blur-md md:p-8 rounded-xl shadow-2xl hover:shadow-pink-500/50 transition-all transform hover:-translate-y-2"
+              >
+                <div className="mb-4 relative">
+                  <img
+                    src={webinar.image}
+                    alt={webinar.title}
+                    className="w-full h-48 object-cover rounded-lg mb-4"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      const placeholder = e.target.nextElementSibling;
+                      if (placeholder) placeholder.style.display = 'flex';
+                    }}
+                  />
+                  <div className="w-full h-48 bg-purple-900/50 rounded-lg mb-4 items-center justify-center hidden">
+                    <svg className="w-16 h-16 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold text-pink-300 mb-2">{webinar.title}</h3>
+                {webinar.date && (
+                  <p className="text-sm text-purple-200 mb-1">
+                    <span className="text-pink-300">Date:</span> {new Date(webinar.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </p>
+                )}
+                {webinar.organizer && (
+                  <p className="text-sm text-purple-200 mb-4">
+                    <span className="text-pink-300">Organizer:</span> {webinar.organizer}
+                  </p>
+                )}
+                <button
+                  onClick={() => setCurrentWebinar(webinar)}
+                  className="block w-full px-4 py-2 sm:px-6 sm:py-2 bg-pink-500 text-white rounded-lg shadow-lg hover:bg-pink-600 transition-all text-sm sm:text-base text-center"
+                >
+                  View Webinar
                 </button>
               </div>
             ))}
@@ -649,6 +731,59 @@ function App() {
               onClick={() => {
                 setCurrentCertificate(null);
                 scrollToSection('certificates');
+              }}
+              className="w-full sm:w-auto px-6 py-2 bg-pink-500 text-white rounded-lg shadow-lg hover:bg-pink-600 transition-all"
+            >
+              Back
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Webinar Modal */}
+      {currentWebinar && (
+        <div className="fixed inset-0 backdrop-blur-md bg-black/75 flex items-center justify-center z-50 p-4">
+          <div className="bg-purple-900 p-4 sm:p-6 md:p-8 rounded-xl shadow-2xl max-w-full max-h-full overflow-auto">
+            <div className="mb-4 sm:mb-6">
+              <h3 className="text-2xl md:text-3xl font-bold text-pink-300 mb-4">{currentWebinar.title}</h3>
+              {currentWebinar.date && (
+                <p className="text-purple-200 mb-2">
+                  <span className="text-pink-300 font-medium">Date:</span> {new Date(currentWebinar.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </p>
+              )}
+              {currentWebinar.time && (
+                <p className="text-purple-200 mb-2">
+                  <span className="text-pink-300 font-medium">Time:</span> {currentWebinar.time}
+                </p>
+              )}
+              {currentWebinar.organizer && (
+                <p className="text-purple-200 mb-2">
+                  <span className="text-pink-300 font-medium">Organizer:</span> {currentWebinar.organizer}
+                </p>
+              )}
+              {currentWebinar.description && (
+                <p className="text-purple-200 mb-4 leading-relaxed">
+                  {currentWebinar.description}
+                </p>
+              )}
+              {currentWebinar.url.endsWith('.pdf') ? (
+                <iframe
+                  src={currentWebinar.url}
+                  className="w-full h-[70vh] rounded-lg"
+                  title={currentWebinar.title}
+                />
+              ) : (
+                <img
+                  src={currentWebinar.url}
+                  alt={currentWebinar.title}
+                  className="max-w-full max-h-[70vh] object-contain rounded-lg mx-auto"
+                />
+              )}
+            </div>
+            <button
+              onClick={() => {
+                setCurrentWebinar(null);
+                scrollToSection('webinars');
               }}
               className="w-full sm:w-auto px-6 py-2 bg-pink-500 text-white rounded-lg shadow-lg hover:bg-pink-600 transition-all"
             >
