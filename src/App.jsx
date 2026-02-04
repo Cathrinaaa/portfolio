@@ -85,8 +85,8 @@ function App() {
     {
       id: 1,
       title: "Cybersecurity for Everyone and Introduction to Philippine National Public Key Infrastructure (PNPKI)",
-      image: "/webinar-placeholder.jpg",
-      url: "/webinar-placeholder.jpg",
+      image: "/webi1.png",
+      url: "/webi1.png",
       date: "2026-01-28",
       organizer: "DICT CAR, Abra Provincial Office",
       time: "8:00 AM – 12:00 NN",
