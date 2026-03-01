@@ -77,6 +77,12 @@ function App() {
       title: "Introduction to Modern AI",
       image: "/cert6.png",
       url: "/cert6.png" 
+    },
+    {
+      id: 7,
+      title: "Data Analytics Essentials",
+      image: "/cert7.png",
+      url: "/cert7.png" 
     }
   ];
 
